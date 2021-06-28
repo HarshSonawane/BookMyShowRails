@@ -1,0 +1,19 @@
+div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
+  div class="carousel-inner"
+    =@movies.each_with_index do |movie, index|
+      -if index == 0
+        div class="carousel-item active"
+          = link_to movie_path(movie.id)
+            = image_tag movie.cover, class: "d-block w-100 h-50"
+      -else
+        div class="carousel-item"
+          = link_to movie_path(movie.id)
+            = image_tag movie.cover, class: "d-block w-100 h-50"
+      
+   
+  button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"
+    span class="carousel-control-prev-icon" aria-hidden="true"
+    span class="visually-hidden" Previous
+  button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"
+    span class="carousel-control-next-icon" aria-hidden="true"
+    span class="visually-hidden" Next

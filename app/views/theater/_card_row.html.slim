@@ -1,0 +1,11 @@
+div class="row"
+  - @theaters.each do |f|
+    div class="col-sm-3" style="margin-top: 5px"
+      div class="card"
+        - if f.image.attached?
+          =image_tag f.image, class:"card-img-top", style: 'height:300px;width:auto;'
+        - else
+          = image_tag "https://via.placeholder.com/300", class:"card-img-top"
+        div class="card-body"
+          h5= f.name
+          = link_to "See Available Shows", theater_path(f), class: "btn btn-lg btn-dark" 

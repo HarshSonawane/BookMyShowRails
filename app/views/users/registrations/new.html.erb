@@ -1,0 +1,41 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+    <%= f.text_field :name, autofocus: true, placeholder: "Enter your name", class: "form-control", autocomplete: "name" %>
+  </div>
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+  <%= f.text_field :city, placeholder: "City", class: "form-control" %>
+  </div>
+
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+  <%= f.text_field :phone, autocomplete: "phone", placeholder: "Phone", class: "form-control" %>
+  </div>
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+  </div>
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+  </div>
+
+  <div class="field col-md-6" style="margin-top: 10px;">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-dark" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

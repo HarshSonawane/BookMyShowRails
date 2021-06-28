@@ -1,0 +1,9 @@
+div class="card mb-3"
+  - if @theater.image.attached?
+    =image_tag @theater.image, class:"card-img-top", style: 'height:300px;'
+  - else
+    = image_tag "https://via.placeholder.com/300", class:"card-img-top"
+    
+  div class="card-body"
+    h5= @theater.name
+    p= "#{@theater.pincode} - #{@theater.city.name}"
