@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'theater#index'
+  resources :theater_admin do
+    get 'screens'
+    get 'edit_screen'
+    get 'shows'
+  end
   resources :theater do
-    resources :shows
+    get 'shows'
   end
 
   get '/movie/:id', to: 'theater#movie', as: 'movie'

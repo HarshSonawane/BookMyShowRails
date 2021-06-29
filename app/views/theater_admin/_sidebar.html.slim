@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-3">
+      h3= @theater.theater.name
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          = link_to "Home", theater_admin_index_path, class: "nav-link active"
+        </li>
+        <li class="nav-item">
+          = link_to "Screens", theater_admin_screens_path(current_user.id), class: "nav-link"
+        </li>
+        <li class="nav-item">
+          = link_to "Shows", theater_admin_shows_path(current_user.id), class: "nav-link"
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Payments</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>

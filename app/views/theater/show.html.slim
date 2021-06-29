@@ -7,3 +7,4 @@ div class="card mb-3"
   div class="card-body"
     h5= @theater.name
     p= "#{@theater.pincode} - #{@theater.city.name}"
+    =link_to "See Available Shows", theater_shows_path(@theater), class: "btn btn-danger"

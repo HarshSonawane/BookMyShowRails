@@ -1,0 +1,26 @@
+<div class="col-sm-9">
+      h2= "SHOWS"
+      div class="table-responsive"
+        table class="table align-middle table-striped"
+          thead
+            tr
+              td= "id"
+              td= "MOVIE"
+              td= "SCREEN"
+              td= "TIME"
+              td= "DATE"
+              td= "..."
+
+          tbody
+            -@shows.each do |show|
+              tr class="align-bottom"
+                td= show.id
+                td= show.movie.name
+                td= show.screen.name
+                td= show.time
+                td= show.date
+                td
+                  =link_to "#"
+                    <i class="bi bi-pencil-square"></i>
+                  =link_to "#"
+                    <i class="bi bi-trash"></i>

@@ -28,6 +28,11 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="<%= root_path %>" tabindex="-1" aria-disabled="true">Shows</a>
         </li>
+        <% if current_user.role == 2 %>
+          <li class="nav-item">
+          <a class="nav-link" href="<%= theater_admin_index_path %>">Manage Theater</a>
+        </li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
