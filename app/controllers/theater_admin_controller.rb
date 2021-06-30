@@ -63,6 +63,28 @@ class TheaterAdminController < ApplicationController
 
 
   def create_show
+    @show = Show.create(show_params)
+    @theater = UserTheater.where(user: current_user).first
+    @shows = Show.joins(:screen).where(screen: { theater: @theater })
+    @screens = @theater.theater.screens
+    if @show.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def delete_show
+    @show = Show.find params[:id]
+    @show.delete
+    @theater = UserTheater.where(user: current_user).first
+    @shows = Show.joins(:screen).where(screen: { theater: @theater })
+    @show = Show.new
+    @movies = Movie.all
+    @screens = Screen.where(theater: @theater)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def bookings
@@ -72,6 +94,7 @@ class TheaterAdminController < ApplicationController
   end
 
   def show_params
+    params.require(:show).permit(:time, :date, :movie_id, :screen_id)
   end
 
   def screen_params

@@ -1,5 +1,22 @@
 =render 'sidebar'
-=render 'shows'
+<div class="col-sm-9">
+      h2= "SHOWS"
+      div class="table-responsive"
+        table class="table align-middle table-striped" id="shows_table"
+          thead
+            tr
+              td= "id"
+              td= "MOVIE"
+              td= "SCREEN"
+              td= "TIME"
+              td= "RUNTIME"
+              td= "DATE"
+              td= "..."
+
+          tbody
+            -@shows.each do |show|
+              =render 'show', show: show
+
 div 
         h4= "ADD NEW SCREEN"
         =render 'show_form'

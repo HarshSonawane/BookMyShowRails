@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete 'delete_screen/:id', to: 'theater_admin#delete_screen', as: 'delete_screen'
   get 'edit_screen/:id', to: 'theater_admin#edit_screen', as: 'edit_screen'
   patch 'update_screen/:id', to: 'theater_admin#update_screen', as: 'update_screen'
+  delete 'delete_show/:id', to: 'theater_admin#delete_show', as: 'delete_show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 end

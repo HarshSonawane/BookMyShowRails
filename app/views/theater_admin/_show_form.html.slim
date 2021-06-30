@@ -1,8 +1,8 @@
 =form_for @show, url: theater_admin_create_show_path(), method: 'POST', remote: true do |f|
   div class="mb-3"
-    = f.date_field :date, class: "form-control col-12", placeholder: "Date"
+    = f.date_field :date, class: "form-control col-12", placeholder: "Date", required: true
   div class="mb-3"
-    = f.time_field :time, class: "form-control col-12", placeholder: "Time"
+    = f.time_field :time, class: "form-control col-12", placeholder: "Time", required: true 
   div class="mb-3"
     = f.select "movie_id", options_from_collection_for_select(@movies, "id", "name"), {}, {class: 'form-select col-12'}
   div class="mb-3"
