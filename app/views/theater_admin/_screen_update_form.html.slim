@@ -1,0 +1,8 @@
+=form_for @screen, url: update_screen_path() do |f|
+  div class="mb-3"
+    = f.text_field :name, class: "form-control col-12", placeholder: "Name of Screen"
+  div class="mb-3"
+    = f.text_field :no_of_seats, class: "form-control col-12", placeholder: "No Of Seats"
+  div class="mb-3"
+    = f.hidden_field :theater_id, value: @theater.id
+    = f.button :submit, class: "btn btn-danger col-12"

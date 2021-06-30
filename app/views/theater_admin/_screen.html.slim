@@ -1,0 +1,9 @@
+tr class="align-bottom"
+  td= screen.id
+  td= screen.name
+  td= screen.no_of_seats
+  td
+    =link_to edit_screen_path(screen.id)
+      <i class="bi bi-pencil-square"></i>
+    =link_to delete_screen_path(screen.id), method: 'DELETE', remote: true,  data: { confirm: "Are you sure?" }
+      <i class="bi bi-trash"></i>
