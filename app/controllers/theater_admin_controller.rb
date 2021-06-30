@@ -67,9 +67,14 @@ class TheaterAdminController < ApplicationController
     @theater = UserTheater.where(user: current_user).first
     @shows = Show.joins(:screen).where(screen: { theater: @theater })
     @screens = @theater.theater.screens
-    if @show.save
-      respond_to do |format|
+    respond_to do |format|
+      if @show.save
         format.js
+      else
+        format.js
+        @message.errors.any?
+        @message.errors.each do |key, value|
+        end
       end
     end
   end

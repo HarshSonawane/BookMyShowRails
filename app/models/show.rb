@@ -4,6 +4,8 @@ class Show < ApplicationRecord
 
   has_many :bookings
 
+  # scope :endtime => self.time + (self.movie.runtime * 60)
+
   before_save do
     @shows = Show.where(screen: self.screen, date: self.date)
     @shows.each do |show|

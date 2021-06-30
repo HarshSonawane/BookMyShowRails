@@ -1,4 +1,5 @@
 =render 'sidebar'
+
 <div class="col-sm-9">
       h2= "SHOWS"
       div class="table-responsive"
@@ -17,6 +18,7 @@
             -@shows.each do |show|
               =render 'show', show: show
 
-div 
-        h4= "ADD NEW SCREEN"
-        =render 'show_form'
+div
+  span id="helpBlock" class="help-block"
+  h4= "ADD NEW SCREEN"
+  =render 'show_form'

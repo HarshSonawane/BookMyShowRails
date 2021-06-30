@@ -1,2 +1,5 @@
 |
   $('#shows_table tbody').append("#{escape_javascript render(:partial => 'show', :locals => { :show => @show })}");
+
+  @message.errors.full_messages.each do |message|
+    $(“#helpBlock”).append(‘<div class=”notice”><%= escape_javascript(message)%></div>’);
