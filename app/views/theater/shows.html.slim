@@ -20,4 +20,4 @@
         div class="card-body"
           h5= "#{show.movie.name} @ #{show.screen.name}" 
           p= "Total Seats - #{show.screen.no_of_seats} at #{show.time} on #{show.date}"
-          =link_to "Book Now @ #{show.amount} Rs", "#", class: "btn btn-danger"
+          =link_to "Book Now @ #{show.amount} Rs", show_details_path(show.id), class: "btn btn-danger"

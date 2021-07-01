@@ -25,6 +25,10 @@ class TheaterController < ApplicationController
     @shows = Show
   end
 
+  def show_details
+    @show = Show.find params[:id]
+  end
+
   def shows
     @theater = Theater.find params[:theater_id]
     @shows = Show.joins(:screen).where(screen: { theater: @theater })

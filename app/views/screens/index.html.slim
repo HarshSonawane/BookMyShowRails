@@ -1,0 +1,19 @@
+h1 Listing screens
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @screens.each do |screen|
+      tr
+        td = link_to 'Show', screen
+        td = link_to 'Edit', edit_screen_path(screen)
+        td = link_to 'Destroy', screen, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Screen', new_screen_path

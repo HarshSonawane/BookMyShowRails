@@ -5,5 +5,5 @@ tr class="align-bottom"
   td
     =link_to edit_screen_path(screen.id)
       <i class="bi bi-pencil-square"></i>
-    =link_to screen_path(screen.id), method: 'DELETE', remote: true,  data: { confirm: "Are you sure?" }
+    =link_to screens_path(screen.id), method: 'DELETE', remote: true,  data: { confirm: "Are you sure?" }
       <i class="bi bi-trash"></i>

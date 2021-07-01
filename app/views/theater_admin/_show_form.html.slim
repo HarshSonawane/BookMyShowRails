@@ -1,4 +1,4 @@
-=form_for @show, url: theater_admin_create_show_path(), method: 'POST', remote: true do |f|
+=form_for @show, url: shows_path, method: 'POST', remote: true do |f|
   div class="mb-3"
     = f.date_field :date, class: "form-control col-12", placeholder: "Date", required: true
   div class="mb-3"

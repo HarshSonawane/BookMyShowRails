@@ -1,3 +1,2 @@
 |
-  //$('#screens_body').load(window.location.href + " #screens_body" );
   $('#screens tbody').append("#{escape_javascript render(:partial => 'screen', :locals => { :screen => @screen })}");
