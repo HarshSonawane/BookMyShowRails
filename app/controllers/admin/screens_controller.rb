@@ -1,9 +1,15 @@
-class Admin::ScreensController < ApplicationController
+class Admin::ScreensController < Admin::BaseController
   before_action :set_screen, only: %i[ show edit update destroy ]
-
+  
   # GET /screens or /screens.json
   def index
-    @screens = Screen.all
+    @theater = UserTheater.where(user: current_user).first
+    if @theater.nil?
+      redirect_to root_path
+    else
+      @screens = @theater.theater.screens
+      @screen = Screen.new
+    end
   end
 
   # GET /screens/1 or /screens/1.json

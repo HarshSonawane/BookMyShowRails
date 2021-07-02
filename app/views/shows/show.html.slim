@@ -1,6 +1,35 @@
-p#notice = notice
+<div class="row">
+    <div class="col-sm-2">
+      h3= @show.movie.name
+      br
+      h5= @show.screen.name
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          = link_to "Selected 2 seats", "#", class: "nav-link active"
+      <hr class="d-sm-none">
+    </div>
 
 
-=> link_to 'Edit', edit_show_path(@show)
-'|
-=< link_to 'Back', shows_path
+<div class="col-sm-10">
+  div class="row"
+    div class="col-sm-12" style="margin-top: 5px; margin-bottom: 20px"
+          div class="card"
+            div class="card-body"
+              
+
+
+  div class="row"
+      -(1..@show.screen.no_of_seats).each do |index|
+        - if @booked_seats.include?index
+          div class="col-lg-3" style="margin-top: 5px"
+          <input class="form-check-input" type="checkbox" checked disabled>
+        - else
+          div class="col-lg-3" style="margin-top: 5px"
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+
+
+      div
+        p 
+
+
+      = link_to "Proceed", "#", class: "btn btn-danger"

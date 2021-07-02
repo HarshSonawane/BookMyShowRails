@@ -3,11 +3,20 @@ class Admin::ShowsController < ApplicationController
 
   # GET /shows or /shows.json
   def index
-    @shows = Show.all
+    @theater = UserTheater.where(user: current_user).first
+    if @theater.nil?
+      redirect_to root_path
+    else
+      @shows = Show.joins(:screen).where(screen: { theater: @theater })
+      @show = Show.new
+      @movies = Movie.all
+      @screens = Screen.where(theater: @theater)
+    end
   end
 
   # GET /shows/1 or /shows/1.json
   def show
+    
   end
 
   # GET /shows/new

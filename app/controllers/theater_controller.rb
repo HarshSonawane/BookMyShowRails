@@ -27,6 +27,7 @@ class TheaterController < ApplicationController
 
   def show_details
     @show = Show.find params[:id]
+    @booked_seats = []
   end
 
   def shows
@@ -36,4 +37,5 @@ class TheaterController < ApplicationController
 
   def screens
   end
+  
 end

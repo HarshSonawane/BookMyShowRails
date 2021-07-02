@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-  resources :screens
-  resources :shows
   root 'theater#index'
-  resources :theater_admin do
-    get 'screens'
-    get 'shows'
-  end
+  
   resources :theater do
     get 'shows'
+    resources :shows, only: [:show]
   end
 
   namespace :admin do
+    root 'screens#index'
     resources :shows, :screens, :bookings
   end
 

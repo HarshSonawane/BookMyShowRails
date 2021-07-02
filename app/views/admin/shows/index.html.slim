@@ -1,19 +1,24 @@
-h1 Listing shows
+=render 'admin/sidebar'
 
-table
-  thead
-    tr
-      th
-      th
-      th
+<div class="col-sm-9">
+      h2= "SHOWS"
+      div class="table-responsive"
+        table class="table align-middle table-striped" id="shows_table"
+          thead
+            tr
+              td= "id"
+              td= "MOVIE"
+              td= "SCREEN"
+              td= "TIME"
+              td= "RUNTIME"
+              td= "DATE"
+              td= "..."
 
-  tbody
-    - @shows.each do |show|
-      tr
-        td = link_to 'Show', show
-        td = link_to 'Edit', edit_show_path(show)
-        td = link_to 'Destroy', show, data: { confirm: 'Are you sure?' }, method: :delete
+          tbody
+            -@shows.each do |show|
+              =render 'show', show: show
 
-br
-
-= link_to 'New Show', new_show_path
+div
+  span id="helpBlock" class="help-block"
+  h4= "ADD NEW SCREEN"
+  =render 'show_form'

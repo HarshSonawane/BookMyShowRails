@@ -18,6 +18,6 @@
           = image_tag "https://via.placeholder.com/200", class:"img-fluid rounded-start"
       div class="col-md-8"
         div class="card-body"
-          h5= "#{show.movie.name} @ #{show.screen.name}" 
+          h5= "#{show.movie.name} @ #{show.screen.name} #{show.id}" 
           p= "Total Seats - #{show.screen.no_of_seats} at #{show.time} on #{show.date}"
-          =link_to "Book Now @ #{show.amount} Rs", show_details_path(show.id), class: "btn btn-danger"
+          =link_to "Book Now @ #{show.amount} Rs", theater_show_path(show.screen.theater.id, show.id), class: "btn btn-danger"

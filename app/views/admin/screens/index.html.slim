@@ -1,19 +1,17 @@
-h1 Listing screens
-
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @screens.each do |screen|
-      tr
-        td = link_to 'Show', screen
-        td = link_to 'Edit', edit_screen_path(screen)
-        td = link_to 'Destroy', screen, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Screen', new_screen_path
+=render 'admin/sidebar'
+<div class="col-sm-9">
+      h2= "SCREENS"
+      div class="table-responsive" id="screens"
+        table class="table align-middle table-striped"
+          thead
+            tr
+              td= "id"
+              td= "Name"
+              td= "No Of Seats"
+              td= "..."
+          tbody id="screens_body"
+            -@screens.each do |screen|
+              =render 'screen', screen: screen
+      div 
+        h4= "ADD NEW SCREEN"
+        =render 'screen_form'

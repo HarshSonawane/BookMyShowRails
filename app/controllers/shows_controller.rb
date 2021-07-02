@@ -1,13 +1,14 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: %i[ show edit update destroy ]
 
-  # GET /shows or /shows.json
-  def index
-    @shows = Show.all
-  end
-
   # GET /shows/1 or /shows/1.json
   def show
+    @show = Show.find params[:id]
+    @booked_seats = [1,2,3,4]
+    @show.bookings.each do |booking|
+      @booked_seats = @booked_seats + booking.seats.split(',').to_a.map(&:to_i)
+    end
+    puts @booked_seats
   end
 
   # GET /shows/new
@@ -66,4 +67,5 @@ class ShowsController < ApplicationController
     def show_params
       params.require(:show).permit(:time, :date, :movie_id, :screen_id)
     end
+
 end
