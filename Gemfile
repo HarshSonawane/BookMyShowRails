@@ -27,6 +27,9 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
+gem 'razorpay'
+
+gem 'stripe', '~> 5.35'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

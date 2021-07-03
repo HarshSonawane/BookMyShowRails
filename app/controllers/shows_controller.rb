@@ -4,11 +4,14 @@ class ShowsController < ApplicationController
   # GET /shows/1 or /shows/1.json
   def show
     @show = Show.find params[:id]
-    @booked_seats = [1,2,3,4]
+    @booked_seats = []
     @show.bookings.each do |booking|
-      @booked_seats = @booked_seats + booking.seats.split(',').to_a.map(&:to_i)
+      if booking.is_confirmed?
+      else
+        @booked_seats = @booked_seats + booking.seats.split(',').to_a.map(&:to_i)
+      end
     end
-    puts @booked_seats
+    @booking = Booking.new
   end
 
   # GET /shows/new
@@ -66,6 +69,10 @@ class ShowsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def show_params
       params.require(:show).permit(:time, :date, :movie_id, :screen_id)
+    end
+
+    def booking_params
+      params.require(:booking).permit(:user_id, :show_id, :seats, :amount)
     end
 
 end

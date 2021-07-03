@@ -75,5 +75,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  Key_id = 'rzp_test_VBRCodAounZVGH'
+  secret_key = 'Vw3IylELsfhLvPX7NS7qoEqv'
   
 end

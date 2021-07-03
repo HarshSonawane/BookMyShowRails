@@ -4,12 +4,6 @@ class TheaterController < ApplicationController
     @movies = Movie.featured
   end
 
-  def new
-  end
-
-  def create
-  end
-
   def movie
     @movie = Movie.find params[:id]
     @shows = Show.where(movie: @movie)
@@ -35,7 +29,17 @@ class TheaterController < ApplicationController
     @shows = Show.joins(:screen).where(screen: { theater: @theater })
   end
 
-  def screens
+  def create_booking
+    @booking = Booking.create(booking_params)
+    if @booking.save
+      @payment = Payment.create(booking: @booking, medium: 'direct', status: 'completed')
+      @payment.save()
+      redirect_to root_path, notice: "Your booking was successfull for seat #{@booking.seats}"
+    end
+  end
+
+  def booking_params
+    params.require(:booking).permit(:user_id, :show_id, :seats, :amount)
   end
   
 end

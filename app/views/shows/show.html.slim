@@ -4,11 +4,12 @@
       br
       h5= @show.screen.name
       <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          = link_to "Selected 2 seats", "#", class: "nav-link active"
+        li class="nav-item" id="selected_seats_display" hidden="true"
+          div class="nav-link active" id="selected_seats"
       <hr class="d-sm-none">
     </div>
 
+input type="hidden" id="amount" value=@show.amount
 
 <div class="col-sm-10">
   div class="row"
@@ -18,18 +19,65 @@
               
 
 
-  div class="row"
+  div class="row" id="seats"
       -(1..@show.screen.no_of_seats).each do |index|
         - if @booked_seats.include?index
-          div class="col-lg-3" style="margin-top: 5px"
+          div class="col-2" style="margin-top: 5px"
           <input class="form-check-input" type="checkbox" checked disabled>
         - else
-          div class="col-lg-3" style="margin-top: 5px"
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-
-
+          div class="col-2" style="margin-top: 5px"
+          input class="form-check-input" type="checkbox" name="checkbox" id="inlineCheckbox1" value=index
       div
-        p 
+        h 
+        p
+      =form_for @booking, url: create_booking_path do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :show_id, value: @show.id
+        = f.hidden_field :amount, value: "", id: "total_amount"
+        = f.hidden_field :seats, value: "", id: "seatnumbers"
+        button type="submit" name="submit" id="submit" disabled="disabled" value="" hidden="true" class="btn btn-danger"
+
+      / form action="#" method="POST"
+      / input type="hidden" name="seatnumbers" id="seatnumbers" value=""
+      / button type="submit" name="submit" id="submit" disabled="disabled" value="" hidden="true" class="btn btn-danger"
 
 
-      = link_to "Proceed", "#", class: "btn btn-danger"
+javascript:
+  const seatsContainer = document.getElementById("seats")
+  let bookSeats = []
+  let amt = document.getElementById("amount").value;
+
+  seatsContainer.addEventListener('click', (e) => {
+    if (e.target.checked === true) {
+      bookSeats.push(e.target.value);
+      console.log(bookSeats);
+      data = bookSeats.filter(Number)
+      document.getElementById("seatnumbers").value = data.join(",");
+      document.getElementById("total_amount").value = data.length  * amt;
+      document.getElementById('selected_seats').innerText = data + " Selected";
+      document.getElementById('submit').innerText = "Proceed and Pay " + (data.length * amt);
+      console.log(document.getElementById("seatnumbers").value);
+    } else {
+      if (bookSeats.includes(e.target.value)){
+        bookSeats.pop(e.target.value);
+      } else {
+        console.log('Normal')
+      }
+      console.log(bookSeats);
+      data = bookSeats.filter(Number)
+      document.getElementById("seatnumbers").value = data.join(",");
+      document.getElementById("total_amount").value = data.length  * amt;
+      document.getElementById('selected_seats').innerText = data + " Selected";
+      document.getElementById('submit').innerText = "Proceed and Pay " + (data.length  * amt);
+      console.log(document.getElementById("seatnumbers").value);
+    }
+    if (data.length > 0){
+      document.getElementById("submit").disabled = false;
+      document.getElementById("submit").hidden = false;
+      document.getElementById("selected_seats_display").hidden = false;
+    } else {
+      document.getElementById("submit").disabled = true;
+      document.getElementById("submit").hidden = true;
+      document.getElementById("selected_seats_display").hidden = true;
+    }
+  });
