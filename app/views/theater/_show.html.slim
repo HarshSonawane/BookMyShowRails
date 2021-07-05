@@ -2,7 +2,7 @@ div class="card mb-3" style="max-width: 540px;"
   div class="row g-0"
     div class="col-md-4"
       - if show.image.attached?
-        =image_tag show.image, class:"img-fluid rounded-start", style: 'height:300px;'
+        = image_tag show.image, class:"img-fluid rounded-start", style: 'height:300px;'
       - else
         = image_tag "https://via.placeholder.com/300", class:"img-fluid rounded-start"
     div class="col-md-8"

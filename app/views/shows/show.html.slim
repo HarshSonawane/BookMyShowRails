@@ -33,6 +33,7 @@ input type="hidden" id="amount" value=@show.amount
       =form_for @booking, url: create_booking_path do |f|
         = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :show_id, value: @show.id
+        = f.hidden_field :is_confirmed, value: true
         = f.hidden_field :amount, value: "", id: "total_amount"
         = f.hidden_field :seats, value: "", id: "seatnumbers"
         button type="submit" name="submit" id="submit" disabled="disabled" value="" hidden="true" class="btn btn-danger"

@@ -4,13 +4,7 @@ class ShowsController < ApplicationController
   # GET /shows/1 or /shows/1.json
   def show
     @show = Show.find params[:id]
-    @booked_seats = []
-    @show.bookings.each do |booking|
-      if booking.is_confirmed?
-      else
-        @booked_seats = @booked_seats + booking.seats.split(',').to_a.map(&:to_i)
-      end
-    end
+    @booked_seats = @show.bookings.where(is_confirmed: true).pluck(:seats).map{|s| s.split(",")}.flatten.uniq.map(&:to_i)
     @booking = Booking.new
   end
 

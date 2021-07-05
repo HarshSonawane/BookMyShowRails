@@ -1,6 +1,6 @@
 div class="card mb-3"
   - if @movie.cover.attached?
-    =image_tag @movie.cover, class:"card-img-top", style: 'height:300px;'
+    = image_tag @movie.cover, class:"card-img-top", style: 'height:300px;'
   - else
     = image_tag "https://via.placeholder.com/300", class:"card-img-top"
     
@@ -13,11 +13,11 @@ div class="card mb-3"
     div class="row g-0"
       div class="col-md-4"
         - if show.screen.theater.image.attached?
-          =image_tag show.screen.theater.image, class:"img-fluid rounded-start", style: 'height:200px;'
+          = image_tag show.screen.theater.image, class:"img-fluid rounded-start", style: 'height:200px;'
         - else
           = image_tag "https://via.placeholder.com/200", class:"img-fluid rounded-start"
       div class="col-md-8"
         div class="card-body"
           h5= "#{show.screen.name} @ #{show.screen.theater.name}" 
           p= "Total Seats - #{show.screen.no_of_seats}, Location - #{show.screen.theater.pincode }"
-          =link_to "Book Now @ #{show.amount} Rs", theater_show_path(show.screen.theater.id, show.id), class: "btn btn-danger"
+          = link_to "Book Now @ #{show.amount} Rs", theater_show_path(show.screen.theater.id, show.id), class: "btn btn-danger"

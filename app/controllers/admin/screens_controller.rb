@@ -12,10 +12,6 @@ class Admin::ScreensController < Admin::BaseController
     end
   end
 
-  # GET /screens/1 or /screens/1.json
-  def show
-  end
-
   # GET /screens/new
   def new
     @screen = Screen.new
@@ -23,7 +19,7 @@ class Admin::ScreensController < Admin::BaseController
 
   # POST /screens or /screens.json
   def create
-    @screen = Screen.create(screen_params)
+    @screen = Screen.new(screen_params)
     respond_to do |format|
       if @screen.save
         format.js

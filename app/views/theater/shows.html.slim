@@ -1,23 +1,22 @@
-<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
+nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb"
+  ol class="breadcrumb"
+    li class="breadcrumb-item"
       = link_to "Home", root_path
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-      =@theater.name
-    </li>
-  </ol>
-</nav>
+    
+    li class="breadcrumb-item active" aria-current="page"
+      = @theater.name
+  
+
 -@shows.each do |show|
   div class="card mb-3"
     div class="row g-0"
       div class="col-md-4"
         - if show.movie.cover.attached?
-          =image_tag show.movie.cover, class:"img-fluid rounded-start", style: 'height:200px;'
+          = image_tag show.movie.cover, class:"img-fluid rounded-start", style: 'height:200px;'
         - else
           = image_tag "https://via.placeholder.com/200", class:"img-fluid rounded-start"
       div class="col-md-8"
         div class="card-body"
           h5= "#{show.movie.name} @ #{show.screen.name} #{show.id}" 
           p= "Total Seats - #{show.screen.no_of_seats} at #{show.time} on #{show.date}"
-          =link_to "Book Now @ #{show.amount} Rs", theater_show_path(show.screen.theater.id, show.id), class: "btn btn-danger"
+          = link_to "Book Now @ #{show.amount} Rs", theater_show_path(show.screen.theater.id, show.id), class: "btn btn-danger"

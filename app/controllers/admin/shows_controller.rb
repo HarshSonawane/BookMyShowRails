@@ -8,24 +8,16 @@ class Admin::ShowsController < ApplicationController
       redirect_to root_path
     else
       @shows = Show.joins(:screen).where(screen: { theater: @theater })
+      # @shows =  @theater.theater.shows
       @show = Show.new
       @movies = Movie.all
-      @screens = Screen.where(theater: @theater)
+      @screens = @theater.theater.screens
     end
-  end
-
-  # GET /shows/1 or /shows/1.json
-  def show
-    
   end
 
   # GET /shows/new
   def new
     @show = Show.new
-  end
-
-  # GET /shows/1/edit
-  def edit
   end
 
   # POST /shows or /shows.json
@@ -71,10 +63,7 @@ class Admin::ShowsController < ApplicationController
     @theater = UserTheater.where(user: current_user).first
     @movies = Movie.all
     @screens = Screen.where(theater: @theater)
-  end
-
-
-  def bookings
+    # @screens = @theater.screens
   end
 
   private
