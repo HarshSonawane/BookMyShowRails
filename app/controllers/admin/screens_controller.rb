@@ -34,12 +34,16 @@ class Admin::ScreensController < Admin::BaseController
     end
   end
 
+  def edit
+    @screen = Screen.find params[:id]
+  end
+
   # PATCH/PUT /screens/1 or /screens/1.json
   def update
     respond_to do |format|
       if @screen.update(screen_params)
         format.js
-        format.html { redirect_to @screen, notice: "Screen was successfully updated." }
+        format.html { redirect_to admin_screens_path, notice: "Screen was successfully updated." }
         format.json { render :show, status: :ok, location: @screen }
       else
         format.html { render :edit, status: :unprocessable_entity }

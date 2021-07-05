@@ -6,7 +6,7 @@ tr class="align-bottom"
   td= show.movie.runtime
   td= show.date.strftime("%Y %m %d")
   td
-    =link_to "#"
+    =link_to edit_admin_show_path(show.id)
       <i class="bi bi-pencil-square"></i>
     =link_to admin_shows_path, method: 'DELETE', remote: true,  data: { confirm: "Are you sure?" }
       <i class="bi bi-trash"></i>

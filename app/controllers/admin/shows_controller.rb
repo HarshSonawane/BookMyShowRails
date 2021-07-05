@@ -46,7 +46,7 @@ class Admin::ShowsController < ApplicationController
     respond_to do |format|
       if @show.update(show_params)
         format.js
-        format.html { redirect_to @show, notice: "Show was successfully updated." }
+        format.html { redirect_to admin_shows_path, notice: "Show was successfully updated." }
         format.json { render :show, status: :ok, location: @show }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,6 +63,14 @@ class Admin::ShowsController < ApplicationController
       format.html { redirect_to shows_url, notice: "Show was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def edit
+    @show = Show.find params[:id]
+
+    @theater = UserTheater.where(user: current_user).first
+    @movies = Movie.all
+    @screens = Screen.where(theater: @theater)
   end
 
 

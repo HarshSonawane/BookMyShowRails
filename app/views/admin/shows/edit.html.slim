@@ -1,0 +1,11 @@
+=form_for @show, url: admin_show_path(@show.id), method: 'PUT' do |f|
+  div class="mb-3"
+    = f.date_field :date, class: "form-control col-12", placeholder: "Date", required: true
+  div class="mb-3"
+    = f.time_field :time, class: "form-control col-12", placeholder: "Time", required: true 
+  div class="mb-3"
+    = f.select "movie_id", options_from_collection_for_select(@movies, "id", "name"), {}, {class: 'form-select col-12'}
+  div class="mb-3"
+    = f.select "screen_id", options_from_collection_for_select(@screens, "id", "name"), {}, {class: 'form-select col-12'}
+  div class="mb-3"
+    = f.button :submit, class: "btn btn-danger col-12"

@@ -1,0 +1,7 @@
+=form_for @screen, url: admin_screen_path(@screen.id), method: 'PUT' do |f|
+  div class="mb-3"
+    = f.text_field :name, class: "form-control col-12", placeholder: "Name of Screen"
+  div class="mb-3"
+    = f.text_field :no_of_seats, class: "form-control col-12", placeholder: "No Of Seats"
+  div class="mb-3"
+    = f.button :submit, class: "btn btn-danger col-12"
