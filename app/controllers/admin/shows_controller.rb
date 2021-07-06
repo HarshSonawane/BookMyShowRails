@@ -1,39 +1,31 @@
 class Admin::ShowsController < ApplicationController
   before_action :set_show, only: %i[ show edit update destroy ]
+  before_action :set_theater
 
-  # GET /shows or /shows.json
   def index
-    @theater = UserTheater.where(user: current_user).first
-    if @theater.nil?
-      redirect_to root_path
-    else
-      @shows = Show.joins(:screen).where(screen: { theater: @theater })
-      # @shows =  @theater.theater.shows
-      @show = Show.new
-      @movies = Movie.all
-      @screens = @theater.theater.screens
-    end
+    @shows =  @theater.shows
+    @show = Show.new
+    @movies = Movie.all
+    @screens = @theater.screens
   end
 
-  # GET /shows/new
   def new
     @show = Show.new
   end
 
-  # POST /shows or /shows.json
   def create
     @show = Show.new(show_params)
     respond_to do |format|
       if @show.save
         format.js
       else
+        format.js {  flash[:notice] = @show.errors }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @show.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /shows/1 or /shows/1.json
   def update
     respond_to do |format|
       if @show.update(show_params)
@@ -47,7 +39,6 @@ class Admin::ShowsController < ApplicationController
     end
   end
 
-  # DELETE /shows/1 or /shows/1.json
   def destroy
     @show.destroy
     respond_to do |format|
@@ -59,20 +50,24 @@ class Admin::ShowsController < ApplicationController
 
   def edit
     @show = Show.find params[:id]
-
-    @theater = UserTheater.where(user: current_user).first
     @movies = Movie.all
-    @screens = Screen.where(theater: @theater)
-    # @screens = @theater.screens
+    @screens = @theater.screens
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_show
       @show = Show.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    def set_theater
+      @ut = UserTheater.where(user: current_user).first
+      if @ut.nil?
+        redirect_to root_path
+      else
+        @theater = @ut.theater
+      end
+    end
+
     def show_params
       params.require(:show).permit(:time, :date, :movie_id, :screen_id)
     end
