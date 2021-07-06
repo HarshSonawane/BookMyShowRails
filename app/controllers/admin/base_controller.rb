@@ -4,7 +4,7 @@ class Admin::BaseController < ApplicationController
   protected
 
   def restrict_user_by_role
-    unless current_user or current_user.role == "2"
+    unless current_user or current_user.role == "admin"
       redirect_to root_path
     end
   end
