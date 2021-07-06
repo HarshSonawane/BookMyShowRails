@@ -5,4 +5,6 @@ class Theater < ApplicationRecord
   has_many :shows, :through => :screens
   
   has_one_attached :image
+
+  validates :name, :pincode, presence: true
 end

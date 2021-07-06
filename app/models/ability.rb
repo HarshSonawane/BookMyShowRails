@@ -8,7 +8,7 @@ class Ability
     #
 
       user ||= User.new # guest user (not logged in)
-      if user.role == 'superadmin'
+      if user.role == "superadmin"
             can :manage, :all
             can :access, :rails_admin       # only allow admin users to access Rails Admin
             can :manage, :dashboard         # allow access to dashboard

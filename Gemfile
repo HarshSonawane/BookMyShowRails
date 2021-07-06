@@ -30,6 +30,7 @@ gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'razorpay'
 
 gem 'stripe', '~> 5.35'
+gem 'simplecov', require: false, group: :test
 
 
 # Use Redis adapter to run Action Cable in production
@@ -70,3 +71,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rexml'
