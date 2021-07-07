@@ -58,30 +58,6 @@
           null
         ]
       },
-      "/home/quickinsure019/projects/bookmy/app/models/booking.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/quickinsure019/projects/bookmy/app/models/city.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null
-        ]
-      },
       "/home/quickinsure019/projects/bookmy/app/models/movie.rb": {
         "lines": [
           1,
@@ -92,39 +68,71 @@
           null,
           1,
           null,
-          1,
+          3,
           null
         ]
       },
-      "/home/quickinsure019/projects/bookmy/app/models/payment.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/quickinsure019/projects/bookmy/app/models/screen.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/quickinsure019/projects/bookmy/app/models/show.rb": {
+      "/home/quickinsure019/projects/bookmy/app/controllers/theater_controller.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/quickinsure019/projects/bookmy/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
           null,
           1,
           null,
           1,
+          2,
+          null,
           null
         ]
       },
@@ -138,17 +146,6 @@
           null,
           1,
           null,
-          1,
-          null
-        ]
-      },
-      "/home/quickinsure019/projects/bookmy/app/models/user_theater.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
           1,
           null
         ]
@@ -347,26 +344,6 @@
         "branches": {
         }
       },
-      "/home/quickinsure019/projects/bookmy/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/home/quickinsure019/projects/bookmy/app/controllers/shows_controller.rb": {
         "lines": [
           0,
@@ -421,54 +398,6 @@
           0,
           0,
           null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/quickinsure019/projects/bookmy/app/controllers/theater_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -549,8 +478,87 @@
         ],
         "branches": {
         }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/booking.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/city.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/payment.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/screen.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/show.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/quickinsure019/projects/bookmy/app/models/user_theater.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1625571563
+    "timestamp": 1625656476
   }
 }
