@@ -4,11 +4,9 @@ RSpec.describe "Theaters", type: :request do
 
   describe "GET index" do
     it "assigns all theater to @theaters" do
-      @theaters = all(:theaters)
-      @movies = Movie.featured
       get theater_index_path
-      expect(:theaters) == ([Theater.all])
-      expect(:movies) == ([@movies])
+      expect(:theaters) == ([all(:theaters)])
+      expect(:movies) == ([all(:movies)])
     end
 
     it "redirect when not logged in" do
