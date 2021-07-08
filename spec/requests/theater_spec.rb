@@ -1,45 +1,74 @@
 require 'rails_helper'
+require_relative '../support/controller_macros'
+
+
 
 RSpec.describe "Theaters", type: :request do
-
+  include Devise::Test::IntegrationHelpers
   describe "GET index" do
     it "assigns all theater to @theaters" do
-      get theater_index_path
+      sign_in create(:user)
+      get "/"
       expect(:theaters) == ([all(:theaters)])
       expect(:movies) == ([all(:movies)])
     end
-
-    it "redirect when not logged in" do
-      get '/'
-      expect(response).to redirect_to('/users/sign_in')  
+  end
+  
+  describe "GET movie", type: :feature do
+    it "assigns all shows to @shows" do
+      sign_in create(:user)
+      m = create(:movie)
+      get "/movie/#{m.id}/"
+      expect(:shows) == ([create(:show)])
+      expect(:movie) == ([m])
     end
-
   end
 
-  describe 'the signin process', type: :feature do
-    before :each do
-      User.create(email: 'user1@gmail.com', password: 'password', name: 'harsh', city: 'satana', phone: '4387523842')
+  describe "GET show", type: :feature do
+    it "assigns theater to @theater" do
+      sign_in create(:user)
+      theater = create(:theater)
+      get "/theater/#{theater.id}/"
+      expect(:theater) == ([theater])
     end
-    it 'signs @user in' do
-      visit '/users/sign_in'
-      fill_in 'Email', with: 'user1@gmail.com'
-      fill_in 'Password', with: 'password'
-      click_button 'Log in'
-     expect(current_path).to eq(root_path)
-     expect(page).to have_text('Signed in successfully.')
-    end
-   end
+  end
 
-  describe "GET movie", type: :feature do
-    before :each do
-      @movie = Movie.create(name: 'sample movue', release_date: '12-12-2021')
+  describe "GET show_details", type: :feature do
+    it "assigns show to @show" do
+      sign_in create(:user)
+      show = create(:show)
+      theater = create(:theater)
+      booked_seats = []
+      get "/theater/#{theater.id}/shows/#{show.id}"
+      expect(:show) == ([show])
+      expect(:booked_seats) == ([booked_seats])
     end
-    it "assigns all shows to @shows" do
-      get movie_path(1)
-      expect(:shows) == ([@movie])
-      expect(:movie) == ([@movie])
-    end
+  end
 
+  describe "GET shows", type: :feature do
+    it "assigns shows to @shows" do
+      sign_in create(:user)
+      theater = create(:theater)
+      shows = theater.shows
+      get "/theater/#{theater.id}/shows"
+      expect(:theater) == ([theater])
+      expect(:shows) == ([shows])
+    end
+  end
+
+  describe "POST create_booking", type: :feature do
+    it "assigns booking to @booking" do
+      user = create(:user)
+      puts user.inspect
+      sign_in user
+      show = create(:show)
+      puts show.inspect
+      booking = create(:booking)
+      puts booking.inspect
+      post "/booking", params: { booking: { show_id: show.id, user_id: user.id, seats: "23,,45", amount: 600, is_confirmed: true}}
+      expect(:booking) == ([booking])
+      puts response
+    end
   end
   
 end

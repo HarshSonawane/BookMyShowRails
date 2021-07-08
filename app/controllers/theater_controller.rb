@@ -8,11 +8,7 @@ class TheaterController < ApplicationController
     @movie = Movie.find params[:id]
     @shows = @movie.shows
   end
-
-  def movie_show
-    @show = Show.find params[:id]
-  end
-
+  
   def show
     @theater = Theater.find params[:id]
     @screens = @theater.shows

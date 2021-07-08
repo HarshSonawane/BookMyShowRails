@@ -7,9 +7,9 @@ class Admin::ScreensController < Admin::BaseController
     @screen = Screen.new
   end
 
-  def new
-    @screen = Screen.new
-  end
+  # def new
+  #   @screen = Screen.new
+  # end
 
   def create
     @screen = Screen.new(screen_params)

@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Shows", type: :request do
-    describe '#show' do
-      it 'renders the show template' do
-        t = Theater.create(name: "Sample", pincode: 462041, city: City.create(name: "sample", state: "Sample"))
-        get '/theater/', params: {:id => t.id.to_s}
-        expect(response).to render_template('theater/index')
-      end
+  include Devise::Test::IntegrationHelpers
+  
+  describe '#show' do
+    it 'renders the show template' do
+      sign_in create(:user)
+      t = create(:theater)
+      get "/theater/#{t.id.to_s}"
+      expect(response).to render_template('theater/show')
+    end
   end
+
 end
