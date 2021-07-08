@@ -1,2 +1,7 @@
-|
-  $('#screens tbody').append("#{escape_javascript render(:partial => 'screen', :locals => { :screen => @screen })}");
+- if flash[:messages]
+  |
+    $('#alerts').load(window.location.href + " #alerts");
+- else
+  |
+    $('#screens tbody').append("#{escape_javascript render(:partial => 'screen', :locals => { :screen => @screen })}");
+  

@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :shows, :screens
   end
 
+  authenticated do
+    root to: "theater#index", as: :authenticated_root
+  end
+
   get '/movie/:id', to: 'theater#movie', as: 'movie'
   # get '/show/:id', to: 'theater#movie_show', as: 'movie_show'
   # get '/show/details/:id', to:'theater#show_details', as: 'show_details'

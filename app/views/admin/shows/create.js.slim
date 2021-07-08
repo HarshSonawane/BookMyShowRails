@@ -1,2 +1,3 @@
 |
   $('#shows_table tbody').append("#{escape_javascript render(:partial => 'show', :locals => { :show => @show })}");
+  $('#alerts').load(window.location.href + " #alerts");

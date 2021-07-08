@@ -1,31 +1,25 @@
 class Admin::ScreensController < Admin::BaseController
   before_action :set_screen, only: %i[ show edit update destroy ]
+  before_action :set_theater
   
-  # GET /screens or /screens.json
   def index
-    @theater = UserTheater.where(user: current_user).first
-    if @theater.nil?
-      redirect_to root_path
-    else
-      @screens = @theater.theater.screens
-      @screen = Screen.new
-    end
-  end
-
-  # GET /screens/new
-  def new
+    @screens = @theater.screens
     @screen = Screen.new
   end
 
-  # POST /screens or /screens.json
+  # def new
+  #   @screen = Screen.new
+  # end
+
   def create
     @screen = Screen.new(screen_params)
     respond_to do |format|
       if @screen.save
         format.js
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @screen.errors, status: :unprocessable_entity }
+        @errors = @screen.errors
+        flash.now[:messages] = @screen.errors.full_messages[0]
+        format.js
       end
     end
   end
@@ -34,7 +28,6 @@ class Admin::ScreensController < Admin::BaseController
     @screen = Screen.find params[:id]
   end
 
-  # PATCH/PUT /screens/1 or /screens/1.json
   def update
     respond_to do |format|
       if @screen.update(screen_params)
@@ -48,7 +41,6 @@ class Admin::ScreensController < Admin::BaseController
     end
   end
 
-  # DELETE /screens/1 or /screens/1.json
   def destroy
     @screen.destroy
     respond_to do |format|
@@ -59,12 +51,19 @@ class Admin::ScreensController < Admin::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_screen
       @screen = Screen.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    def set_theater
+      @ut = UserTheater.where(user: current_user).first
+      if @ut.nil?
+        redirect_to root_path
+      else
+        @theater = @ut.theater
+      end
+    end
+
     def screen_params
       params.require(:screen).permit(:name, :no_of_seats, :theater_id)
     end
